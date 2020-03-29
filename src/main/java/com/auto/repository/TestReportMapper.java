@@ -37,6 +37,7 @@ public interface TestReportMapper extends BaseMapper<TestReport> {
     @Select("select * from test_report where case_id=#{caseId}")
     TestReport findByCase(Integer caseId);
 
+
     @Select("select t1.id,t1.name suiteName,t2.username testerName from suite t1 left join user t2 on t1.create_user=t2.id where t1.id=#{suiteId}")
     @Results({
             @Result(property = "id",column = "id"),

@@ -1,6 +1,7 @@
 package com.auto.common;
 
 import com.auto.domain.TestReport;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -12,6 +13,8 @@ public class ReportVO {
     private String suiteName;
 
     private String testerName;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createReportTime;
 
     private int totalCaseNum;
@@ -19,6 +22,7 @@ public class ReportVO {
     private int failureNum; //失败数
 
     private List<CaseListVO> caseList;
+
 
 
     public int getTotalCaseNum(){

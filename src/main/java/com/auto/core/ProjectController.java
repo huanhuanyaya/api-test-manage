@@ -1,7 +1,9 @@
 package com.auto.core;
 
 
+import com.alibaba.fastjson.JSON;
 import com.auto.common.ResponseResult;
+import com.auto.domain.ApiClassification;
 import com.auto.domain.Project;
 import com.auto.domain.User;
 import com.auto.service.ProjectService;
@@ -86,4 +88,11 @@ public class ProjectController {
     }
 
 
+    @PostMapping("/addProject2")
+    public ResponseResult addProject2(@RequestBody Project project) {
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        project.setCreateUser(user.getId());
+        projectService.save(project);
+        return new ResponseResult("0","新增项目成功");
+    }
 }

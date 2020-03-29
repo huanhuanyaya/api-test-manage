@@ -8,6 +8,7 @@ import com.auto.service.TestReportService;
 import com.auto.service.TestRuleService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +44,11 @@ public class TestReportController {
         return new ResponseResult("0",testReport);
     }
 
-    @RequestMapping("/get")
+    @RequestMapping("/getReport")
     @ApiOperation(value = "根据suiteId获取测试报告前端渲染")
     public ResponseResult getReport(Integer suiteId){
         ReportVO reportVO = testReportService.getReport(suiteId);
+        System.out.println(reportVO);
         reportVO.setCreateReportTime(new Date());
         return new ResponseResult("0",reportVO);
     }
